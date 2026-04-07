@@ -25,7 +25,7 @@ export default function ConfiguracionTasas({ tasas, onChange }) {
   return (
     <div className="card" style={{ marginTop: '0.75rem' }}>
       <h3 className="card-title">Personalizar tasas (%)</h3>
-      <div className="tabla-wrapper">
+      <div className="config-tabla-wrapper">
         <table className="config-tabla">
           <thead>
             <tr>
