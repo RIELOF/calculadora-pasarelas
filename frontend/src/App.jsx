@@ -3,17 +3,18 @@ import FormCalculo from './components/FormCalculo';
 import TablaResultados from './components/TablaResultados';
 import GraficoBarras from './components/GraficoBarras';
 import ConfiguracionTasas from './components/ConfiguracionTasas';
-import { calcularComisiones, TASAS_DEFAULT } from './services/calcular';
+import { calcularComisiones, TASAS_DEFAULT, UF_CLP_DEFAULT } from './services/calcular';
 
 export default function App() {
   const [resultados, setResultados] = useState([]);
   const [error, setError] = useState('');
   const [tasas, setTasas] = useState(TASAS_DEFAULT);
+  const [ufCLP, setUfCLP] = useState(UF_CLP_DEFAULT);
   const [mostrarConfig, setMostrarConfig] = useState(false);
 
   const handleCalcular = (monto, tipo) => {
     try {
-      const data = calcularComisiones(monto, tipo, tasas);
+      const data = calcularComisiones(monto, tipo, tasas, ufCLP);
       setResultados(data);
       setError('');
     } catch (err) {
@@ -49,7 +50,12 @@ export default function App() {
             {mostrarConfig ? '▲ Ocultar configuración' : '⚙️ Personalizar tasas'}
           </button>
           {mostrarConfig && (
-            <ConfiguracionTasas tasas={tasas} onChange={setTasas} />
+            <ConfiguracionTasas
+              tasas={tasas}
+              onChange={setTasas}
+              ufCLP={ufCLP}
+              onUfChange={setUfCLP}
+            />
           )}
         </div>
       </main>
