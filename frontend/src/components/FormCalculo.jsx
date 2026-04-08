@@ -62,7 +62,7 @@ export default function FormCalculo({ onCalcular }) {
             </select>
           </div>
 
-          <button type="submit" className="btn-calcular" disabled={loading}>
+          <button type="submit" className="btn-calcular">
             Calcular
           </button>
         </div>
