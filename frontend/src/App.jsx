@@ -56,6 +56,7 @@ export default function App() {
 
       <footer className="app-footer">
         <p>Tasas referenciales — verificar con cada proveedor antes de contratar</p>
+        <p className="app-footer-firma">Diseñado por <strong>AGH</strong></p>
       </footer>
     </div>
   );

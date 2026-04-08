@@ -71,6 +71,20 @@ body {
   color: var(--gray-400);
   font-size: 0.75rem;
   padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.app-footer-firma {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  letter-spacing: 0.03em;
+}
+
+.app-footer-firma strong {
+  color: var(--gray-600);
+  font-weight: 700;
 }
 
 /* Card */
