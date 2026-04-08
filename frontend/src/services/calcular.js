@@ -16,14 +16,20 @@ const NOMBRES = {
   getnet: 'Getnet',
 };
 
+const IVA = 0.19;
+
 export function calcularComisiones(monto, tipo, tasas = TASAS_DEFAULT) {
   return Object.entries(tasas)
     .map(([key, rates]) => {
       const porcentaje = rates[tipo];
-      const comision = Math.round(monto * porcentaje);
+      const comisionNeta = Math.round(monto * porcentaje);
+      const iva = Math.round(comisionNeta * IVA);
+      const comision = comisionNeta + iva;
       return {
         pasarela: NOMBRES[key] || key,
         porcentaje: porcentaje * 100,
+        comisionNeta,
+        iva,
         comision,
         liquido: monto - comision,
       };

@@ -8,7 +8,7 @@ const clp = (value) =>
 export default function TablaResultados({ resultados }) {
   return (
     <div className="card">
-      <h2 className="card-title">Comparativa de comisiones</h2>
+      <h2 className="card-title">Comparativa de comisiones <span className="iva-nota">(comisión + IVA 19%)</span></h2>
 
       {/* Tabla — desktop */}
       <div className="tabla-wrapper">
@@ -17,7 +17,9 @@ export default function TablaResultados({ resultados }) {
             <tr>
               <th>Pasarela</th>
               <th>Tasa</th>
-              <th>Comisión</th>
+              <th>Comisión neta</th>
+              <th>IVA (19%)</th>
+              <th>Total cobrado</th>
               <th>Monto líquido</th>
             </tr>
           </thead>
@@ -38,6 +40,8 @@ export default function TablaResultados({ resultados }) {
                     </div>
                   </td>
                   <td className="num">{r.porcentaje.toFixed(2)}%</td>
+                  <td className="num">− {clp(r.comisionNeta)}</td>
+                  <td className="num iva-val">− {clp(r.iva)}</td>
                   <td className="num comision-val">− {clp(r.comision)}</td>
                   <td className="num liquido-val">{clp(r.liquido)}</td>
                 </tr>
@@ -69,6 +73,14 @@ export default function TablaResultados({ resultados }) {
                 </div>
                 <div className="result-card-item">
                   <span className="result-card-label">Comisión</span>
+                  <span className="result-card-value">− {clp(r.comisionNeta)}</span>
+                </div>
+                <div className="result-card-item">
+                  <span className="result-card-label">IVA 19%</span>
+                  <span className="result-card-value iva-val">− {clp(r.iva)}</span>
+                </div>
+                <div className="result-card-item">
+                  <span className="result-card-label">Total cobrado</span>
                   <span className="result-card-value comision-val">− {clp(r.comision)}</span>
                 </div>
                 <div className="result-card-item">

@@ -278,6 +278,14 @@ select:focus {
 .num          { font-variant-numeric: tabular-nums; }
 .comision-val { color: var(--red);   font-weight: 500; }
 .liquido-val  { color: var(--green); font-weight: 700; }
+.iva-val      { color: #d97706; }
+
+.iva-nota {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--gray-400);
+  margin-left: 0.25rem;
+}
 
 /* ── Cards móvil (< 540px) reemplaza la tabla ── */
 .cards-mobile {
