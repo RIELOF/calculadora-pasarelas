@@ -8,7 +8,9 @@ const clp = (value) =>
 export default function TablaResultados({ resultados }) {
   return (
     <div className="card">
-      <h2 className="card-title">Comparativa de comisiones <span className="iva-nota">(comisión + IVA 19%)</span></h2>
+      <h2 className="card-title">
+        Comparativa de comisiones <span className="iva-nota">(comisión + IVA 19%)</span>
+      </h2>
 
       {/* Tabla — desktop */}
       <div className="tabla-wrapper">
@@ -16,7 +18,8 @@ export default function TablaResultados({ resultados }) {
           <thead>
             <tr>
               <th>Pasarela</th>
-              <th>Tasa</th>
+              <th>Tasa variable</th>
+              <th>Tarifa fija</th>
               <th>Comisión neta</th>
               <th>IVA (19%)</th>
               <th>Total cobrado</th>
@@ -40,6 +43,11 @@ export default function TablaResultados({ resultados }) {
                     </div>
                   </td>
                   <td className="num">{r.porcentaje.toFixed(2)}%</td>
+                  <td className="num">
+                    {r.tarifaUF
+                      ? <span className="uf-tag">{r.tarifaUF} UF</span>
+                      : <span className="sin-fija">—</span>}
+                  </td>
                   <td className="num">− {clp(r.comisionNeta)}</td>
                   <td className="num iva-val">− {clp(r.iva)}</td>
                   <td className="num comision-val">− {clp(r.comision)}</td>
@@ -71,6 +79,12 @@ export default function TablaResultados({ resultados }) {
                   <span className="result-card-label">Tasa</span>
                   <span className="result-card-value">{r.porcentaje.toFixed(2)}%</span>
                 </div>
+                {r.tarifaUF && (
+                  <div className="result-card-item">
+                    <span className="result-card-label">Tarifa fija</span>
+                    <span className="result-card-value"><span className="uf-tag">{r.tarifaUF} UF</span></span>
+                  </div>
+                )}
                 <div className="result-card-item">
                   <span className="result-card-label">Comisión</span>
                   <span className="result-card-value">− {clp(r.comisionNeta)}</span>
