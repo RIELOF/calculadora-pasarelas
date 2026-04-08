@@ -1,4 +1,4 @@
-import { TASAS_DEFAULT } from '../App';
+import { TASAS_DEFAULT } from '../services/calcular';
 
 const NOMBRES = {
   transbank: 'Transbank (Webpay)',

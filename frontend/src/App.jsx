@@ -5,8 +5,6 @@ import GraficoBarras from './components/GraficoBarras';
 import ConfiguracionTasas from './components/ConfiguracionTasas';
 import { calcularComisiones, TASAS_DEFAULT } from './services/calcular';
 
-export { TASAS_DEFAULT };
-
 export default function App() {
   const [resultados, setResultados] = useState([]);
   const [error, setError] = useState('');
