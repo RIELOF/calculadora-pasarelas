@@ -3,35 +3,24 @@ import FormCalculo from './components/FormCalculo';
 import TablaResultados from './components/TablaResultados';
 import GraficoBarras from './components/GraficoBarras';
 import ConfiguracionTasas from './components/ConfiguracionTasas';
-import { calcular } from './services/api';
+import { calcularComisiones, TASAS_DEFAULT } from './services/calcular';
 
-export const TASAS_DEFAULT = {
-  transbank: { debito: 0.0175, credito: 0.032, prepago: 0.0175 },
-  flow: { debito: 0.0289, credito: 0.0289, prepago: 0.0289 },
-  mercadopago: { debito: 0.0299, credito: 0.0299, prepago: 0.0299 },
-  compraquisBasico: { debito: 0.023, credito: 0.023, prepago: 0.023 },
-  compraquisSuper: { debito: 0.0129, credito: 0.0159, prepago: 0.0144 },
-  getnet: { debito: 0.015, credito: 0.030, prepago: 0.015 },
-};
+export { TASAS_DEFAULT };
 
 export default function App() {
   const [resultados, setResultados] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [tasas, setTasas] = useState(TASAS_DEFAULT);
   const [mostrarConfig, setMostrarConfig] = useState(false);
 
-  const handleCalcular = async (monto, tipo) => {
-    setLoading(true);
-    setError('');
+  const handleCalcular = (monto, tipo) => {
     try {
-      const data = await calcular(monto, tipo, tasas);
+      const data = calcularComisiones(monto, tipo, tasas);
       setResultados(data);
+      setError('');
     } catch (err) {
       setError(err.message);
       setResultados([]);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -43,7 +32,7 @@ export default function App() {
       </header>
 
       <main className="app-main">
-        <FormCalculo onCalcular={handleCalcular} loading={loading} />
+        <FormCalculo onCalcular={handleCalcular} />
 
         {error && <div className="error-msg">⚠️ {error}</div>}
 

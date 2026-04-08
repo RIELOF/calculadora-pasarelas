@@ -5,7 +5,7 @@ function formatearMonto(valor) {
   return solo_digitos.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
 
-export default function FormCalculo({ onCalcular, loading }) {
+export default function FormCalculo({ onCalcular }) {
   const [monto, setMonto] = useState('');
   const [tipo, setTipo] = useState('debito');
   const [validationError, setValidationError] = useState('');
@@ -63,7 +63,7 @@ export default function FormCalculo({ onCalcular, loading }) {
           </div>
 
           <button type="submit" className="btn-calcular" disabled={loading}>
-            {loading ? 'Calculando…' : 'Calcular'}
+            Calcular
           </button>
         </div>
 
