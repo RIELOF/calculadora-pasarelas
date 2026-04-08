@@ -59,6 +59,44 @@ body {
   font-size: clamp(0.875rem, 3vw, 1rem);
 }
 
+/* Banner UF */
+.uf-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.625rem;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--gray-700);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.uf-valor strong { color: var(--blue); font-weight: 700; }
+
+.uf-fecha {
+  color: var(--gray-400);
+  font-size: 0.75rem;
+}
+
+.uf-loading { color: var(--gray-400); font-style: italic; }
+
+.uf-refresh {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--blue);
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 0.125rem;
+  transition: transform 0.3s;
+}
+
+.uf-refresh:hover { transform: rotate(180deg); }
+
 .app-main {
   display: flex;
   flex-direction: column;
