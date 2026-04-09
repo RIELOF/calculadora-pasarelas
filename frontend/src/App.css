@@ -412,6 +412,65 @@ select:focus {
   position: relative;
 }
 
+/* Filtros */
+.filtros-card {
+  padding: 1rem 1.25rem;
+}
+
+.filtros-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filtros-titulo {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--gray-700);
+}
+
+.filtros-toggle-todas {
+  background: none;
+  border: 1px solid var(--gray-200);
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  color: var(--blue);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.filtros-toggle-todas:hover {
+  background: var(--blue-light);
+}
+
+.filtros-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.filtro-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  cursor: pointer;
+  user-select: none;
+}
+
+.filtro-item input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--blue);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
 /* Config */
 .config-section {
   display: flex;
