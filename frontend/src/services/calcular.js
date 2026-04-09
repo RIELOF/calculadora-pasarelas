@@ -32,7 +32,7 @@ const NOMBRES = {
   compraquisBasico: 'Compraquí Básico',
   compraquisSuper:  'Compraquí Súper',
   tuuPercentual:    'TUU',
-  tuuMixta:         'TUU (Mixto)',
+  tuuMixta:         'TUU (Mixta)',
   getnet:           'Getnet',
 };
 
