@@ -1,9 +1,8 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import FormCalculo from './components/FormCalculo';
 import TablaResultados from './components/TablaResultados';
 import GraficoBarras from './components/GraficoBarras';
 import ConfiguracionTasas from './components/ConfiguracionTasas';
-import FiltrosPasarelas from './components/FiltrosPasarelas';
 import { calcularComisiones, TASAS_DEFAULT, UF_CLP_DEFAULT } from './services/calcular';
 import { obtenerUF } from './services/uf';
 
@@ -11,20 +10,6 @@ const clp = (v) =>
   new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 2 }).format(v);
 
 const VEINTICUATRO_HORAS = 24 * 60 * 60 * 1000;
-
-// Lista fija de nombres para los filtros
-const TODAS_PASARELAS = Object.values({
-  transbank:        'Transbank (Webpay)',
-  flow:             'Flow',
-  mercadopago:      'Mercado Pago',
-  compraquisBasico: 'Compraquí Básico',
-  compraquisSuper:  'Compraquí Súper',
-  klap:             'Klap',
-  sumup:            'SumUp',
-  tuuPercentual:    'TUU',
-  tuuMixta:         'TUU (Mixta)',
-  getnet:           'Getnet',
-});
 
 export default function App() {
   const [resultados, setResultados] = useState([]);
@@ -34,7 +19,6 @@ export default function App() {
   const [ufFecha, setUfFecha] = useState(null);
   const [ufCargando, setUfCargando] = useState(true);
   const [mostrarConfig, setMostrarConfig] = useState(false);
-  const [activas, setActivas] = useState(new Set(TODAS_PASARELAS));
 
   const fetchUF = async () => {
     setUfCargando(true);
@@ -66,11 +50,6 @@ export default function App() {
     }
   };
 
-  const resultadosFiltrados = useMemo(
-    () => resultados.filter((r) => activas.has(r.pasarela)),
-    [resultados, activas]
-  );
-
   return (
     <div className="app">
       <header className="app-header">
@@ -96,23 +75,13 @@ export default function App() {
       <main className="app-main">
         <FormCalculo onCalcular={handleCalcular} />
 
-        <FiltrosPasarelas
-          pasarelas={TODAS_PASARELAS}
-          activas={activas}
-          onChange={setActivas}
-        />
-
         {error && <div className="error-msg">⚠️ {error}</div>}
 
-        {resultadosFiltrados.length > 0 && (
+        {resultados.length > 0 && (
           <>
-            <TablaResultados resultados={resultadosFiltrados} />
-            <GraficoBarras resultados={resultadosFiltrados} />
+            <TablaResultados resultados={resultados} />
+            <GraficoBarras resultados={resultados} />
           </>
-        )}
-
-        {resultados.length > 0 && resultadosFiltrados.length === 0 && (
-          <div className="error-msg">⚠️ Selecciona al menos una pasarela para ver resultados.</div>
         )}
 
         <div className="config-section">
