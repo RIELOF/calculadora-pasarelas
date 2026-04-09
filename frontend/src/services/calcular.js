@@ -12,6 +12,7 @@ export const TASAS_DEFAULT = {
   mercadopago:      { debito: 0.0299, credito: 0.0299, prepago: 0.0299 },
   compraquisBasico: { debito: 0.023,  credito: 0.023,  prepago: 0.023  },
   compraquisSuper:  { debito: 0.0129, credito: 0.0159, prepago: 0.0144 },
+  sumup:            { debito: 0.029,  credito: 0.029,  prepago: 0.029  },
   tuuPercentual:    { debito: 0.0149, credito: 0.0149, prepago: 0.0149 },
   tuuMixta:         {
     debito:  { pct: 0.0079, uf: 0.00169 },
@@ -31,6 +32,7 @@ const NOMBRES = {
   mercadopago:      'Mercado Pago',
   compraquisBasico: 'Compraquí Básico',
   compraquisSuper:  'Compraquí Súper',
+  sumup:            'SumUp',
   tuuPercentual:    'TUU',
   tuuMixta:         'TUU (Mixta)',
   getnet:           'Getnet',
