@@ -9,7 +9,7 @@ import { obtenerUF } from './services/uf';
 const clp = (v) =>
   new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 2 }).format(v);
 
-const SEIS_HORAS = 6 * 60 * 60 * 1000;
+const VEINTICUATRO_HORAS = 24 * 60 * 60 * 1000;
 
 export default function App() {
   const [resultados, setResultados] = useState([]);
@@ -35,7 +35,7 @@ export default function App() {
 
   useEffect(() => {
     fetchUF();
-    const intervalo = setInterval(fetchUF, SEIS_HORAS);
+    const intervalo = setInterval(fetchUF, VEINTICUATRO_HORAS);
     return () => clearInterval(intervalo);
   }, []);
 
