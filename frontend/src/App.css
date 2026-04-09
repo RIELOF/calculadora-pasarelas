@@ -263,23 +263,24 @@ select:focus {
 .tabla-resultados {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
+  table-layout: auto;
 }
 
 .tabla-resultados th {
   text-align: left;
-  padding: 0.625rem 0.75rem;
-  font-size: 0.7rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: var(--gray-400);
   border-bottom: 2px solid var(--gray-200);
   white-space: nowrap;
 }
 
 .tabla-resultados td {
-  padding: 0.75rem;
+  padding: 0.625rem 0.5rem;
   border-bottom: 1px solid var(--gray-100);
   white-space: nowrap;
 }

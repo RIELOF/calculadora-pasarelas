@@ -18,12 +18,12 @@ export default function TablaResultados({ resultados }) {
           <thead>
             <tr>
               <th>Pasarela</th>
-              <th>Tasa variable</th>
-              <th>Tarifa fija</th>
-              <th>Comisión neta</th>
-              <th>IVA (19%)</th>
-              <th>Total cobrado</th>
-              <th>Monto líquido</th>
+              <th>Tasa</th>
+              <th>T. fija</th>
+              <th>Comisión</th>
+              <th>IVA 19%</th>
+              <th>Total</th>
+              <th>Líquido</th>
             </tr>
           </thead>
           <tbody>
