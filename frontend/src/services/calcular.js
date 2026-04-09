@@ -31,7 +31,7 @@ const NOMBRES = {
   mercadopago:      'Mercado Pago',
   compraquisBasico: 'Compraquí Básico',
   compraquisSuper:  'Compraquí Súper',
-  tuuPercentual:    'TUU (Percentual)',
+  tuuPercentual:    'TUU',
   tuuMixta:         'TUU (Mixta)',
   getnet:           'Getnet',
 };
