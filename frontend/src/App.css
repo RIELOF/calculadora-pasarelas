@@ -332,6 +332,17 @@ select:focus {
 
 .sin-fija { color: var(--gray-400); }
 
+.clp-tag {
+  display: inline-block;
+  background: #f0fdf4;
+  color: var(--green);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid var(--green-border);
+}
+
 .iva-nota {
   font-size: 0.75rem;
   font-weight: 400;

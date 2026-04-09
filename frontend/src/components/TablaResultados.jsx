@@ -46,6 +46,8 @@ export default function TablaResultados({ resultados }) {
                   <td className="num">
                     {r.tarifaUF
                       ? <span className="uf-tag">{r.tarifaUF} UF</span>
+                      : r.tarifaCLP
+                      ? <span className="clp-tag">{clp(r.tarifaCLP)}</span>
                       : <span className="sin-fija">—</span>}
                   </td>
                   <td className="num">− {clp(r.comisionNeta)}</td>
@@ -79,10 +81,14 @@ export default function TablaResultados({ resultados }) {
                   <span className="result-card-label">Tasa</span>
                   <span className="result-card-value">{r.porcentaje.toFixed(2)}%</span>
                 </div>
-                {r.tarifaUF && (
+                {(r.tarifaUF || r.tarifaCLP) && (
                   <div className="result-card-item">
                     <span className="result-card-label">Tarifa fija</span>
-                    <span className="result-card-value"><span className="uf-tag">{r.tarifaUF} UF</span></span>
+                    <span className="result-card-value">
+                      {r.tarifaUF
+                        ? <span className="uf-tag">{r.tarifaUF} UF</span>
+                        : <span className="clp-tag">{clp(r.tarifaCLP)}</span>}
+                    </span>
                   </div>
                 )}
                 <div className="result-card-item">

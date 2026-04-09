@@ -12,6 +12,11 @@ export const TASAS_DEFAULT = {
   mercadopago:      { debito: 0.0299, credito: 0.0299, prepago: 0.0299 },
   compraquisBasico: { debito: 0.023,  credito: 0.023,  prepago: 0.023  },
   compraquisSuper:  { debito: 0.0129, credito: 0.0159, prepago: 0.0144 },
+  klap: {
+    debito:  { pct: 0.0062, clp: 76 },
+    credito: { pct: 0.0139, clp: 76 },
+    prepago: { pct: 0.0106, clp: 76 },
+  },
   sumup:            { debito: 0.029,  credito: 0.029,  prepago: 0.029  },
   tuuPercentual:    { debito: 0.0149, credito: 0.0149, prepago: 0.0149 },
   tuuMixta:         {
@@ -32,6 +37,7 @@ const NOMBRES = {
   mercadopago:      'Mercado Pago',
   compraquisBasico: 'Compraquí Básico',
   compraquisSuper:  'Compraquí Súper',
+  klap:             'Klap',
   sumup:            'SumUp',
   tuuPercentual:    'TUU',
   tuuMixta:         'TUU (Mixta)',
@@ -44,8 +50,12 @@ function calcularNeta(monto, rate, ufCLP) {
   if (typeof rate === 'number') {
     return Math.round(monto * rate);
   }
-  // rate = { pct, uf } — Transbank
-  return Math.round(monto * rate.pct + rate.uf * ufCLP);
+  if (rate.uf !== undefined) {
+    // tarifa fija en UF
+    return Math.round(monto * rate.pct + rate.uf * ufCLP);
+  }
+  // tarifa fija en CLP
+  return Math.round(monto * rate.pct + rate.clp);
 }
 
 export function calcularComisiones(monto, tipo, tasas = TASAS_DEFAULT, ufCLP = UF_CLP_DEFAULT) {
@@ -56,10 +66,18 @@ export function calcularComisiones(monto, tipo, tasas = TASAS_DEFAULT, ufCLP = U
       const iva = Math.round(comisionNeta * IVA);
       const comision = comisionNeta + iva;
 
+      let tarifaUF = null;
+      let tarifaCLP = null;
+      if (typeof rate === 'object') {
+        if (rate.uf !== undefined) tarifaUF = rate.uf;
+        if (rate.clp !== undefined) tarifaCLP = rate.clp;
+      }
+
       return {
         pasarela: NOMBRES[key] || key,
         porcentaje: typeof rate === 'number' ? rate * 100 : rate.pct * 100,
-        tarifaUF: typeof rate === 'object' ? rate.uf : null,
+        tarifaUF,
+        tarifaCLP,
         comisionNeta,
         iva,
         comision,
