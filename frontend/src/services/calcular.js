@@ -12,7 +12,11 @@ export const TASAS_DEFAULT = {
   mercadopago:      { debito: 0.0299, credito: 0.0299, prepago: 0.0299 },
   compraquisBasico: { debito: 0.023,  credito: 0.023,  prepago: 0.023  },
   compraquisSuper:  { debito: 0.0129, credito: 0.0159, prepago: 0.0144 },
-  getnet:           { debito: 0.015,  credito: 0.030,  prepago: 0.015  },
+  getnet:           {
+    debito:  { pct: 0.0058, uf: 0.001668 },
+    credito: { pct: 0.0146, uf: 0.001792 },
+    prepago: { pct: 0.0121, uf: 0.001668 },
+  },
 };
 
 const NOMBRES = {
